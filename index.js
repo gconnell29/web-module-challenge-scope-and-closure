@@ -28,11 +28,15 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
+  Counter1 is storing the result of the counterMaker() function whereas counter 2 will just return something.
   
   2. Which of the two uses a closure? How can you tell?
+  counter1 is using closure because it is returning another function.
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
-     counter2 be better?  
+     counter2 be better?
+  counter1: when you want to pass the function to a different function
+  counter2: if you want this to be used any where else in your program
 */
 
 // counter1 code
@@ -62,8 +66,9 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+  let score = 3;
+  return Math.floor(score*Math.random());
 }
 
 
@@ -81,8 +86,17 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(callback, innings){
+  let scores = {
+    "Home": 0,
+    "Away": 0
+  }
+  for (let i = 0; i < innings; i++) {
+    scores.Home += callback();
+    scores.Away += callback();
+  }
+  console.log(scores);
+  return scores;
 }
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
